@@ -86,6 +86,14 @@ hash_units() {
     sort -o "$out_file" "$out_file"
 }
 
+pull_hashes() {
+        echo "Clearing old hashes"
+        rm -rf "$TIMER_SCAN"
+        echo "Pulling hashes"
+        (cd "$PULL_LOCATION" && git clone "$GITHUB_REPO")
+}
+
+pull_hashes
 echo "Building snapshot"
 
 mkdir -p "$BASELINE_DIR"
