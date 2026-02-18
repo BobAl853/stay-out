@@ -109,6 +109,10 @@ if [[ -z "$diff_output" ]]; then
     echo "No changes detected in systemd timer or service units."
 else
     echo "CHANGES DETECTED:"
+    
+    mkdir "/var/log/stay-out/"
+    echo "$diff_output" > "/var/log/stay-out/diff_output.log"
+    logger -p user.alert "Hashing mismatch: Files in one or more persistance areas have been modified. More info found at \"/var/log/stay-out/diff_output.log\""
     echo "$diff_output"
 fi
 
