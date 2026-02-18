@@ -112,6 +112,7 @@ else
     if [! -d "/var/log/stay-out/"]; then
         mkdir "/var/log/stay-out/"
     fi
+    echo "\n\nSCAN RESULTS"
     echo "$diff_output" >> "/var/log/stay-out/diff_output.log"
     logger -p user.alert "Hashing mismatch: Files in one or more persistance areas have been modified. More info found at \"/var/log/stay-out/diff_output.log\""
     echo "$diff_output"
